@@ -175,12 +175,16 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
         head.append(mobile_nav)
     login = soup.select_one("#pt-login a")
     if login:
-        login["href"] = "https://app.pagescms.org/"
+        login["href"] = "https://app.pagescms.org/donggil113/churchofgod-wiki/main"
         login.string = "문서 관리"
     if edit_file:
         content_sub = soup.select_one("#contentSub")
         if content_sub:
-            edit = soup.new_tag("a", href=f"https://github.com/donggil113/churchofgod-wiki/edit/main/{edit_file}")
+            folder = Path(edit_file).parts[2]
+            collection = "new_articles" if folder == "new" else "articles_" + folder[-2:]
+            cms_url = "https://app.pagescms.org/donggil113/churchofgod-wiki/main/collection/"
+            cms_url += collection + "/edit/" + quote(edit_file, safe="")
+            edit = soup.new_tag("a", href=cms_url)
             edit["class"] = "local-edit-link"
             edit.string = "이 문서 편집"
             content_sub.append(edit)
