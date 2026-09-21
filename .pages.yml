@@ -5,32 +5,408 @@ media:
 content:
   - name: articles
     label: 문서
-    type: collection
-    path: content/pages
-    format: json
-    filename: "{primary}.json"
-    view:
-      primary: title
-      fields: [title, categories]
-    fields:
-      - name: title
-        label: 문서 제목
-        type: string
-        required: true
-      - name: summary
-        label: 검색 결과 요약
-        type: text
-      - name: categories
-        label: 분류
-        type: string
-        list: true
-      - name: body
-        label: 본문
-        type: rich-text
-        required: true
-        options:
-          format: html
-          media: false
-      - name: source_url
-        label: 원본 주소
-        type: string
+    type: group
+    items:
+      - name: articles_00
+        label: 기존 문서 1
+        type: collection
+        path: content/pages/imported-00
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_01
+        label: 기존 문서 2
+        type: collection
+        path: content/pages/imported-01
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_02
+        label: 기존 문서 3
+        type: collection
+        path: content/pages/imported-02
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_03
+        label: 기존 문서 4
+        type: collection
+        path: content/pages/imported-03
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_04
+        label: 기존 문서 5
+        type: collection
+        path: content/pages/imported-04
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_05
+        label: 기존 문서 6
+        type: collection
+        path: content/pages/imported-05
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_06
+        label: 기존 문서 7
+        type: collection
+        path: content/pages/imported-06
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_07
+        label: 기존 문서 8
+        type: collection
+        path: content/pages/imported-07
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_08
+        label: 기존 문서 9
+        type: collection
+        path: content/pages/imported-08
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_09
+        label: 기존 문서 10
+        type: collection
+        path: content/pages/imported-09
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_10
+        label: 기존 문서 11
+        type: collection
+        path: content/pages/imported-10
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: articles_11
+        label: 기존 문서 12
+        type: collection
+        path: content/pages/imported-11
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string
+      - name: new_articles
+        label: 새 문서
+        type: collection
+        path: content/pages/new
+        format: json
+        filename: "{primary}.json"
+        view:
+          primary: title
+          fields: [title]
+        fields:
+          - name: title
+            label: 문서 제목
+            type: string
+            required: true
+          - name: summary
+            label: 검색 결과 요약
+            type: text
+          - name: categories
+            label: 분류
+            type: string
+            list: true
+          - name: body
+            label: 본문
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: false
+          - name: source_url
+            label: 원본 주소
+            type: string

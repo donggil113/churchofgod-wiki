@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES = ROOT / "content" / "pages"
 ASSETS = ROOT / "site" / "assets"
 
-for path in PAGES.glob("*.json"):
+for path in PAGES.rglob("*.json"):
     page = json.loads(path.read_text(encoding="utf-8"))
     if page["title"] == "하나님의 교회 지식사전":
         break

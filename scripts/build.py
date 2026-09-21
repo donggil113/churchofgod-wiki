@@ -22,11 +22,12 @@ def key(title: str) -> str:
 
 def read_pages() -> list[dict]:
     result = []
-    for path in sorted((ROOT / "content" / "pages").glob("*.json")):
+    for path in sorted((ROOT / "content" / "pages").rglob("*.json")):
         item = json.loads(path.read_text(encoding="utf-8"))
         if not item.get("title") or not item.get("body"):
             raise ValueError(f"Missing title/body: {path}")
         item["_file"] = path.stem
+        item["_source_path"] = path.relative_to(ROOT).as_posix()
         result.append(item)
     return result
 
@@ -44,7 +45,7 @@ def href_for(raw: str, prefix: str, titles: dict[str, str]) -> str:
         path = parse_qs(parsed.query).get("title", [""])[0].replace("_", " ")
     if key(path) in (key(MAIN_TITLE), key("대문")):
         return prefix + "index.html"
-    if key(path) == key("최근 문서 보기"):
+    if key(path) in (key("최근 문서"), key("최근 문서 보기")):
         return prefix + "recent.html"
     if path in ("특수:모든문서", "Special:AllPages"):
         return prefix + "allpages.html"
@@ -52,6 +53,8 @@ def href_for(raw: str, prefix: str, titles: dict[str, str]) -> str:
         return prefix + "recent.html"
     if path in ("특수:임의문서", "Special:Random"):
         return prefix + "random.html"
+    if path in ("특수:특수문서", "Special:SpecialPages"):
+        return prefix + "special.html"
     if path.startswith(("분류:", "Category:")):
         name = path.split(":", 1)[1]
         return prefix + "category.html?name=" + quote(name)
@@ -96,7 +99,7 @@ def set_categories(soup: BeautifulSoup, categories: list[str], prefix: str) -> N
 
 
 def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str], local_images: dict[str, str],
-           categories: list[str] | None = None, edit_file: str | None = None) -> str:
+           categories: list[str] | None = None, edit_file: str | None = None, description: str = "") -> str:
     soup = BeautifulSoup(shell, "html.parser")
     for script in soup.find_all("script"):
         script.decompose()
@@ -104,6 +107,10 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
         link.decompose()
     for link in soup.select('link[rel="preload"], link[rel="modulepreload"]'):
         link.decompose()
+    for link in soup.select('link[rel="canonical"]'):
+        link.decompose()
+    for meta in soup.head.select('meta[property^="og:"], meta[name^="twitter:"], meta[name="description"]'):
+        meta.decompose()
     if soup.head:
         for i in range(5):
             link = soup.new_tag("link", rel="stylesheet", href=prefix + f"assets/css/source-{i}.css")
@@ -115,6 +122,10 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
             viewport["content"] = "width=device-width, initial-scale=1"
         else:
             soup.head.append(soup.new_tag("meta", attrs={"name": "viewport", "content": "width=device-width, initial-scale=1"}))
+        summary_text = description or (title + " 문서를 읽어보세요.")
+        soup.head.append(soup.new_tag("meta", attrs={"name": "description", "content": summary_text}))
+        soup.head.append(soup.new_tag("meta", attrs={"property": "og:title", "content": title}))
+        soup.head.append(soup.new_tag("meta", attrs={"property": "og:description", "content": summary_text}))
     if soup.title:
         soup.title.string = title + " - 하나님의 교회 지식사전"
     heading = soup.select_one("#firstHeading")
@@ -169,7 +180,7 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
     if edit_file:
         content_sub = soup.select_one("#contentSub")
         if content_sub:
-            edit = soup.new_tag("a", href=f"https://github.com/donggil113/churchofgod-wiki/edit/main/content/pages/{edit_file}.json")
+            edit = soup.new_tag("a", href=f"https://github.com/donggil113/churchofgod-wiki/edit/main/{edit_file}")
             edit["class"] = "local-edit-link"
             edit.string = "이 문서 편집"
             content_sub.append(edit)
@@ -212,15 +223,17 @@ def main() -> None:
     (OUT / ".nojekyll").touch()
     (OUT / "wiki").mkdir()
     home = next(page for page in pages if key(page["title"]) == key(MAIN_TITLE))
-    (OUT / "index.html").write_text(render(shell, home["title"], home["body"], "", titles, local_images, home.get("categories"), home["_file"]), encoding="utf-8")
+    (OUT / "index.html").write_text(render(shell, home["title"], home["body"], "", titles, local_images, home.get("categories"), home["_source_path"], home.get("summary", "")), encoding="utf-8")
     for page in pages:
         target = OUT / "wiki" / page["_file"]
         target.mkdir()
-        target.joinpath("index.html").write_text(render(shell, page["title"], page["body"], "../../", titles, local_images, page.get("categories"), page["_file"]), encoding="utf-8")
+        target.joinpath("index.html").write_text(render(shell, page["title"], page["body"], "../../", titles, local_images, page.get("categories"), page["_source_path"], page.get("summary", "")), encoding="utf-8")
     (OUT / "allpages.html").write_text(render(shell, "모든 문서 목록", page_list_body(pages, ""), "", titles, local_images), encoding="utf-8")
     (OUT / "search.html").write_text(render(shell, "검색", '<div class="mw-parser-output local-results" id="local-results"></div>', "", titles, local_images), encoding="utf-8")
     (OUT / "category.html").write_text(render(shell, "분류", '<div class="mw-parser-output local-results" id="local-category"></div>', "", titles, local_images), encoding="utf-8")
     (OUT / "random.html").write_text(render(shell, "임의 문서", '<div class="mw-parser-output"><p>문서를 여는 중입니다.</p></div>', "", titles, local_images), encoding="utf-8")
+    special_body = '<div class="mw-parser-output"><ul><li><a href="allpages.html">모든 문서 목록</a></li><li><a href="recent.html">최근 문서</a></li><li><a href="random.html">임의 문서</a></li><li><a href="search.html">검색</a></li></ul></div>'
+    (OUT / "special.html").write_text(render(shell, "특수 문서 목록", special_body, "", titles, local_images), encoding="utf-8")
     recent_path = ROOT / "content" / "recent.json"
     recent_titles = json.loads(recent_path.read_text(encoding="utf-8")) if recent_path.exists() else []
     recent = [next((p for p in pages if key(p["title"]) == key(title)), None) for title in recent_titles]

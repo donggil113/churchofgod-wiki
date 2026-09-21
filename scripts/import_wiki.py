@@ -74,7 +74,8 @@ def absolutize_media(html: str) -> str:
 
 def import_page(page: dict, overwrite: bool) -> tuple[str, str]:
     page_id = str(page["pageid"])
-    target = ROOT / "content" / "pages" / f"{page_id}.json"
+    target = ROOT / "content" / "pages" / f"imported-{int(page_id) % 12:02d}" / f"{page_id}.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
     if target.exists() and not overwrite:
         return page_id, "existing"
     parsed = api({"action": "parse", "pageid": page["pageid"], "prop": "text|categories|sections|displaytitle"})["parse"]
