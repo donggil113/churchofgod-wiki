@@ -130,6 +130,9 @@ def main() -> None:
     (ROOT / "content" / "pages").mkdir(parents=True, exist_ok=True)
     import_shell()
     pages = all_pages()
+    recent_data = api({"action": "query", "list": "recentchanges", "rcnamespace": 0, "rclimit": 50, "rcprop": "title"})
+    recent_titles = list(dict.fromkeys(item["title"] for item in recent_data["query"]["recentchanges"]))
+    (ROOT / "content" / "recent.json").write_text(json.dumps(recent_titles, ensure_ascii=False, indent=2), encoding="utf-8")
     if args.limit:
         pages = pages[:args.limit]
     print(f"Importing {len(pages)} pages", flush=True)

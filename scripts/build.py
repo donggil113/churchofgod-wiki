@@ -42,6 +42,10 @@ def href_for(raw: str, prefix: str, titles: dict[str, str]) -> str:
     path = unquote(parsed.path).lstrip("/").replace("_", " ")
     if path == "index.php":
         path = parse_qs(parsed.query).get("title", [""])[0].replace("_", " ")
+    if key(path) in (key(MAIN_TITLE), key("대문")):
+        return prefix + "index.html"
+    if key(path) == key("최근 문서 보기"):
+        return prefix + "recent.html"
     if path in ("특수:모든문서", "Special:AllPages"):
         return prefix + "allpages.html"
     if path in ("특수:최근바뀜", "Special:RecentChanges"):
@@ -59,11 +63,16 @@ def href_for(raw: str, prefix: str, titles: dict[str, str]) -> str:
     return "https://" + ORIGIN + raw
 
 
-def localize_links(soup: BeautifulSoup, prefix: str, titles: dict[str, str]) -> None:
+def localize_links(soup: BeautifulSoup, prefix: str, titles: dict[str, str], local_images: dict[str, str]) -> None:
     for anchor in soup.find_all("a", href=True):
         anchor["href"] = href_for(anchor["href"], prefix, titles)
     for image in soup.find_all("img", src=True):
-        if image["src"].startswith("/"):
+        if image["src"] in local_images:
+            image["src"] = prefix + "assets/" + local_images[image["src"]]
+            image.attrs.pop("srcset", None)
+        elif image["src"].startswith("/media/"):
+            image["src"] = prefix + image["src"].lstrip("/")
+        elif image["src"].startswith("/"):
             image["src"] = "https://" + ORIGIN + image["src"]
 
 
@@ -86,7 +95,7 @@ def set_categories(soup: BeautifulSoup, categories: list[str], prefix: str) -> N
         box.append(link)
 
 
-def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str],
+def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str], local_images: dict[str, str],
            categories: list[str] | None = None, edit_file: str | None = None) -> str:
     soup = BeautifulSoup(shell, "html.parser")
     for script in soup.find_all("script"):
@@ -116,10 +125,18 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
         raise ValueError("Source shell has no #mw-content-text")
     content.clear()
     fragment = BeautifulSoup(body, "html.parser")
+    for unsafe in fragment.select("script, object, embed"):
+        unsafe.decompose()
+    for tag in fragment.find_all(True):
+        for attr in list(tag.attrs):
+            if attr.lower().startswith("on"):
+                del tag[attr]
+            elif attr.lower() in ("href", "src") and str(tag[attr]).strip().lower().startswith("javascript:"):
+                del tag[attr]
     for item in list(fragment.contents):
         content.append(item)
     set_categories(soup, categories or [], prefix)
-    localize_links(soup, prefix, titles)
+    localize_links(soup, prefix, titles, local_images)
     search = soup.select_one("#searchform")
     if search:
         search["action"] = prefix + "search.html"
@@ -181,26 +198,36 @@ def escape(value: str) -> str:
 def main() -> None:
     pages = read_pages()
     titles = {key(page["title"]): page["_file"] for page in pages}
+    local_images = json.loads((ROOT / "site" / "assets" / "home-images.json").read_text(encoding="utf-8"))
     shell = (ROOT / "site" / "shell.html").read_text(encoding="utf-8")
     if not titles.get(key(MAIN_TITLE)):
         raise ValueError(f"Missing homepage: {MAIN_TITLE}")
+    if OUT.resolve().parent != ROOT.resolve() or OUT.name != "dist":
+        raise ValueError("Refusing to replace a build directory outside this project")
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "site" / "assets", OUT / "assets")
+    if (ROOT / "media").exists():
+        shutil.copytree(ROOT / "media", OUT / "media")
     (OUT / ".nojekyll").touch()
     (OUT / "wiki").mkdir()
     home = next(page for page in pages if key(page["title"]) == key(MAIN_TITLE))
-    (OUT / "index.html").write_text(render(shell, home["title"], home["body"], "", titles, home.get("categories"), home["_file"]), encoding="utf-8")
+    (OUT / "index.html").write_text(render(shell, home["title"], home["body"], "", titles, local_images, home.get("categories"), home["_file"]), encoding="utf-8")
     for page in pages:
         target = OUT / "wiki" / page["_file"]
         target.mkdir()
-        target.joinpath("index.html").write_text(render(shell, page["title"], page["body"], "../../", titles, page.get("categories"), page["_file"]), encoding="utf-8")
-    (OUT / "allpages.html").write_text(render(shell, "모든 문서 목록", page_list_body(pages, ""), "", titles), encoding="utf-8")
-    (OUT / "search.html").write_text(render(shell, "검색", '<div class="mw-parser-output local-results" id="local-results"></div>', "", titles), encoding="utf-8")
-    (OUT / "category.html").write_text(render(shell, "분류", '<div class="mw-parser-output local-results" id="local-category"></div>', "", titles), encoding="utf-8")
-    (OUT / "random.html").write_text(render(shell, "임의 문서", '<div class="mw-parser-output"><p>문서를 여는 중입니다.</p></div>', "", titles), encoding="utf-8")
-    recent = sorted(pages, key=lambda p: (ROOT / "content" / "pages" / (p["_file"] + ".json")).stat().st_mtime, reverse=True)[:30]
-    (OUT / "recent.html").write_text(render(shell, "최근 문서", page_list_body(recent, ""), "", titles), encoding="utf-8")
+        target.joinpath("index.html").write_text(render(shell, page["title"], page["body"], "../../", titles, local_images, page.get("categories"), page["_file"]), encoding="utf-8")
+    (OUT / "allpages.html").write_text(render(shell, "모든 문서 목록", page_list_body(pages, ""), "", titles, local_images), encoding="utf-8")
+    (OUT / "search.html").write_text(render(shell, "검색", '<div class="mw-parser-output local-results" id="local-results"></div>', "", titles, local_images), encoding="utf-8")
+    (OUT / "category.html").write_text(render(shell, "분류", '<div class="mw-parser-output local-results" id="local-category"></div>', "", titles, local_images), encoding="utf-8")
+    (OUT / "random.html").write_text(render(shell, "임의 문서", '<div class="mw-parser-output"><p>문서를 여는 중입니다.</p></div>', "", titles, local_images), encoding="utf-8")
+    recent_path = ROOT / "content" / "recent.json"
+    recent_titles = json.loads(recent_path.read_text(encoding="utf-8")) if recent_path.exists() else []
+    recent = [next((p for p in pages if key(p["title"]) == key(title)), None) for title in recent_titles]
+    recent = [p for p in recent if p]
+    if not recent:
+        recent = pages[:30]
+    (OUT / "recent.html").write_text(render(shell, "최근 문서", page_list_body(recent, ""), "", titles, local_images), encoding="utf-8")
     index = [{"id": p["_file"], "title": p["title"], "summary": p.get("summary", ""), "categories": p.get("categories", [])} for p in pages]
     (OUT / "articles.json").write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"Built {len(pages)} editable articles into {OUT}")
