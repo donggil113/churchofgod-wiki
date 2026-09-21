@@ -116,6 +116,7 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
             link = soup.new_tag("link", rel="stylesheet", href=prefix + f"assets/css/source-{i}.css")
             soup.head.append(link)
         soup.head.append(soup.new_tag("link", rel="stylesheet", href=prefix + "assets/css/local.css"))
+        soup.head.append(soup.new_tag("link", rel="icon", href=prefix + "assets/logo.png"))
         soup.head.append(soup.new_tag("script", src=prefix + "assets/site.js", defer=True))
         viewport = soup.head.select_one('meta[name="viewport"]')
         if viewport:
@@ -151,6 +152,9 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
     copyright_link = soup.select_one("#footer-info-custom-copyright a")
     if copyright_link:
         copyright_link["href"] = prefix + "wiki/3603/"
+    powered_by = soup.select_one("#footer-poweredbyico")
+    if powered_by:
+        powered_by.decompose()
     search = soup.select_one("#searchform")
     if search:
         search["action"] = prefix + "search.html"
