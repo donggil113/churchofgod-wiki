@@ -1,0 +1,349 @@
+.wikiEditor-ui * {font-size: 13px; font-family: monospace,monospace}
+
+/* h1, h2, p ,span ,div{font-family:'roboto','notokr',sans-serif} */
+/*.mw-parser-output .external{background:none; padding:0}*/
+.fw600{font-weight:600}
+.part-t{padding-top:20px}
+
+.cog-container{max-width:960px; margin-left:auto; margin-right:auto}
+.cog-title{border:1px solid #E3E6EC; border-radius:8px; padding:20px}
+.cog-title h1{font-size:20px; margin:0; border-bottom:none; font-weight:600}
+.cog-title h2{font-size:17px; font-weight:400 !important; border-bottom:none}
+.cog-title div{font-size:17px; font-weight:600;}
+.cog-tag, .cog-tag a{color:#0745AD !important;}
+.cog-button a{background:#F8F9FB !important; border:1px solid #DADEE6; border-radius:4px; display:inline-block; padding:6px 12px !important; font-size:14px; font-weight:600}
+
+/* cog-box */
+.cog-box-wrap{margin-left:-10px; margin-right:-10px}
+.cog-box{box-sizing:border-box; padding-left:10px; padding-right:10px; margin-bottom:10px}
+.cog-box-inner{border:1px solid #E3E6EC; box-sizing:border-box; border-radius:8px; height:100%; padding:12px 20px}
+.cog-box-title{font-size:18px; font-weight:600; position:relative}
+.cog-box ul{margin-top:8px}
+.cog-box ul li a{color:#0745AD;}
+
+/* cog-related-site */
+.cog-related-site ul{display:flex; flex-wrap:wrap; border-top:1px solid #686C70; margin-left:0; padding-left:0 !important; padding-top:10px}
+.cog-related-site ul li{display:flex; padding-top:4px; padding-bottom:4px; margin-top:10px; box-sizing:border-box; width:100%}
+.cog-intro-wrap .cog-intro-desc{flex:1; font-size:16px;}
+.cog-represent-img{width:320px; height:200px; border-radius:8px; overflow:hidden}
+
+.video-wrap{background-color:#000; position:relative; width:100%; padding-bottom:56.25%; margin:0 auto; margin-top:10px; margin-bottom:10px}
+.video-wrap iframe{position:absolute; width:100%; height:100%; left:0}
+
+/* content */
+.content li{margin-bottom:2px}
+
+.cog-related-site ul li img{width:42px; height:42px;}
+.cog-related-site ul li::marker{font-size:0;}
+.cog-related-site ul li > div.site-info{margin-left:14px; font-size:14px; margin-right:14px; line-height:1.5}
+.cog-related-site .cog-tag a{font-size:13px; font-weight:600}
+.vector-menu-portal h3{border-bottom: 2px solid #D8D8D8; background-image:initial}
+.cog-box-wrap img{width:100%; height:100%}
+
+.site-img a{ display:inline-block; width:42px; height:42px; font-size:0; vertical-align:top; padding-right:0 !important;}
+.site-img.site-img1 a{background:url(https://churchofgod.wiki/images/a/a7/Ico-watv.png) !important}
+.site-img.site-img2 a{background:url(https://churchofgod.wiki/images/7/70/Ico-father.png) !important}
+.site-img.site-img3 a{background:url(https://churchofgod.wiki/images/a/a5/Ico-mediacast.png) !important}
+.site-img.site-img4 a{background:url(https://churchofgod.wiki/images/0/0a/Ico-youtube.png) !important}
+.site-img.site-img5 a{background:url(https://churchofgod.wiki/images/f/fe/Ico-mother.png) !important}
+.site-img.site-img6 a{background:url(https://churchofgod.wiki/images/1/1c/Ico-press.png) !important}
+.site-img.site-img7 a{background:url(https://churchofgod.wiki/images/b/be/Ico-award.png) !important}
+.site-img.site-img8 a{background:url(https://churchofgod.wiki/images/e/e9/Ico-seminar.png) !important}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio:1.5), only screen and (min-resolution:1.5dppx), (-webkit-min-device-pixel-ratio:1.5), (min-resolution:144dpi){
+    .site-img.site-img1 a{background:url(https://churchofgod.wiki/images/a/a7/Ico-watv@3x.png) !important; background-size:100% !important}
+    .site-img.site-img2 a{background:url(https://churchofgod.wiki/images/2/2c/Ico-father@3x.png) !important; background-size:100% !important}
+    .site-img.site-img3 a{background:url(https://churchofgod.wiki/images/5/58/Ico-mediacast@3x.png) !important; background-size:100% !important}
+    .site-img.site-img4 a{background:url(https://churchofgod.wiki/images/7/71/Ico-youtube@3x.png) !important; background-size:100% !important}
+    .site-img.site-img5 a{background:url(https://churchofgod.wiki/images/a/ae/Ico-mother@3x.png) !important; background-size:100% !important}
+    .site-img.site-img6 a{background:url(https://churchofgod.wiki/images/f/fc/Ico-press@3x.png) !important; background-size:100% !important}
+    .site-img.site-img7 a{background:url(https://churchofgod.wiki/images/1/1e/Ico-award@3x.png) !important; background-size:100% !important}
+    .site-img.site-img8 a{background:url(https://churchofgod.wiki/images/a/a6/Ico-seminar@3x.png) !important; background-size:100% !important}
+}
+
+@media(min-width:768px){
+    .part-t{padding-top:40px}
+    .cog-title{padding:25px 30px}
+    .cog-title h1{font-size:28px}
+    .cog-box-wrap{display:flex; flex-wrap:wrap; box-sizing:border-box}
+    .cog-box{width:50%; margin-bottom:20px}
+    .cog-box ul li{font-size:15px}
+    .cog-intro-wrap{display:flex}
+    .cog-intro-wrap .cog-intro-desc{padding-left:30px}
+    .cog-related-site ul li{width:25%}
+    .cog-related-site .cog-tag a{font-size:14px}
+}
+@media(max-width:767px){
+    .cog-container{margin-top:20px}
+    .cog-intro-wrap .cog-intro-desc{margin-top:16px}
+    .content ul{padding-left:20px}
+    .ico-arrow{position:absolute; right:0; top:12px}
+    .ico-arrow::before,
+    .ico-arrow::after{content:''; position:relative; width:6px; height:1px; display:block; background:#000}
+    .ico-arrow::before{transform:rotate(45deg)}
+    .ico-arrow::after{transform:rotate(-45deg); margin-left:4px; margin-top:-1px}
+    .cog-box-title.open .ico-arrow{transform:rotate(180deg)}
+    .cog-box-title ~ * {display:none}
+    .cog-box-title.open ~ * {display:block}
+}
+
+/* =========== */
+.box-half{box-sizing:border-box; margin-top:10px}
+.cog-item {box-sizing:border-box; padding-left:10px; padding-right:10px; margin-top:10px}
+@media(min-width:768px){
+    .box-half{width:50%; margin-top:-10px}
+    .cog-item {margin-top:20px}
+    .mw-content-ltr .cog-box-wrap ul{margin:0; margin-top:0.5em;}
+    .mw-content-ltr .cog-box-wrap ul li{margin-left:14px; padding-left:2px;}
+}
+/* =========== */
+/* sub */
+cite,
+i{font-style:normal}
+body{background:#fff; position:relative; max-width:1400px; margin-left:auto; margin-right:auto}
+#mw-head{background:#fff}
+#mw-panel{width:174px; padding-left:0 !important}
+.mw-body{border:none; position:relative}
+#mw-body-content{max-width:960px; margin-left:auto; margin-right:auto;}
+.mw-body .firstHeading{max-width:960px; margin-left:auto; margin-right:auto;}
+#mw-page-base{background:#fff;}
+
+#mw-navigation{display:block; width:calc(100% - 174px); position:absolute; top:0; padding-left:174px}
+#mw-head {background:#fff; max-width:960px; margin-left:auto; margin-right:auto; position:static}
+.mw-body-content{max-width:960px; margin-left:auto; margin-right:auto}
+#left-navigation,
+#right-navigation,
+#p-personal{position:static; margin:0; padding:0}
+#p-personal{padding-top:10px;}
+#left-navigation,
+#right-navigation{padding-top:9px}
+
+#p-logo{margin-bottom:0; margin-top:12px}
+
+.mw-references-columns li{padding-top:4px; font-size:12px}
+.mw-footer > ul{max-width:960px; margin-left:auto; margin-right:auto}
+.mw-body-content h2{font-weight:600}
+.mw-body-content p{text-align: left}
+#p-search{margin-right:0}
+.content .section-heading{margin-bottom:0 !important; font-size:18px}
+b,strong{font-weight:600}
+.mw-parser-output a.extiw, .mw-parser-output a.external{color:#0745AD}
+.mw-content-ltr dl{margin-top:0; margin-bottom:0}
+.mw-content-ltr dd{margin-left:14px}
+
+/* 각주 */
+.mw-references-wrap{pointer-events:all !important; background:none; border:none; opacity:1 !important; padding:0}
+
+/* WMC SI: 파일 클릭 방지 */
+#filetoc + .fullImageLink a,
+.mw-mmv-image img {pointer-events:none!important}
+
+/* WMC SI: 푸터 */
+#footer-copyrightico {display:none}
+#footer-info-lastmod,
+#footer-places-disclaimer {display:none}
+#footer-info-custom-copyright {pointer-events:none}
+#footer-info-custom-copyright a {color:#000}
+
+/* 푸터 링크 순서: 소개 → 개인정보처리방침 → 모바일 보기 */
+#footer-places {display:flex; flex-wrap:wrap}
+#footer-places-about {order:1}
+#footer-places-privacy {order:2}
+#footer-places-mobileview {order:3}
+
+/* 최근 문서 목록(NewestPages)에서 소개·개인정보처리방침 숨김 */
+body.page-최근_문서 li:has(> a[title="개인정보처리방침"]),
+body.page-최근_문서 li:has(> a[title="하나님의 교회 지식사전 소개"]),
+body.mw-special-NewestPages li:has(> a[title="개인정보처리방침"]),
+body.mw-special-NewestPages li:has(> a[title="하나님의 교회 지식사전 소개"]),
+body.mw-special-NewestPages li:has(> a[title="Privacy Policy"]),
+body.mw-special-NewestPages li:has(> a[title="Introduction to the Church of God Encyclopedia"]),
+body.page-Recent_Documents li:has(> a[title="Privacy Policy"]),
+body.page-Recent_Documents li:has(> a[title="Introduction to the Church of God Encyclopedia"]),
+body.page-Artículos_recientes li:has(> a[title="Privacy Policy"]),
+body.page-Artículos_recientes li:has(> a[title="Introduction to the Church of God Encyclopedia"]),
+body.page-हालसालका_कागजात li:has(> a[title="Privacy Policy"]),
+body.page-हालसालका_कागजात li:has(> a[title="Introduction to the Church of God Encyclopedia"]),
+body.page-Trang_mới_nhất li:has(> a[title="Privacy Policy"]),
+body.page-Trang_mới_nhất li:has(> a[title="Introduction to the Church of God Encyclopedia"]),
+body.page-Documentos_Recentes li:has(> a[title="Privacy Policy"]),
+body.page-Documentos_Recentes li:has(> a[title="Introduction to the Church of God Encyclopedia"]),
+body.page-最新文档 li:has(> a[title="Privacy Policy"]),
+body.page-最新文档 li:has(> a[title="Introduction to the Church of God Encyclopedia"]) {display:none}
+
+/* 모바일(Minerva) 푸터: 스킨이 기본으로 숨기는 소개 링크 표시 + 데스크톱 토글 순서 지정 */
+html .mw-footer #footer-places-about {display:list-item}
+#footer-places-desktop-toggle {order:3}
+/* 모바일 푸터 구분점(•)은 flex 순서 변경과 어긋나므로 제거하고 간격으로 대체
+   (Minerva 스킨이 content:'•'에 !important를 걸어 두어 여기도 !important 필요) */
+#footer-places.footer-places {gap:0 1em}
+#footer-places.footer-places li::before,
+#footer-places.footer-places li::after {content:none !important}
+
+.infobox {border:1px solid #a2a9b1; border-spacing:3px; background-color:#f8f9fa; color:black; margin:0.5em 0 0.5em 1em; padding:0.2em; float:right; clear:right; font-size:88% !important; line-height:1.5em; width:22em}
+.infobox-subbox {padding:0; border:none; margin:-3px; width:auto; min-width:100%; font-size:100%; clear:none; float:none; background-color:transparent}
+.infobox th{width:35%}
+.infobox td{width:100%}
+.infobox td, .infobox th {vertical-align:top; text-align:left}
+.infobox .infobox-above, .infobox caption, .infobox-title {font-size:125%; font-weight:bold; text-align:center}
+.infobox caption, .infobox-title {padding:0.2em}
+.infobox .infobox-header, .infobox .infobox-subheader, .infobox .infobox-image, .infobox .infobox-full-data, .infobox .infobox-below {text-align:center}
+.infobox .infobox-navbar {text-align:right}
+.infobox.bordered {border-collapse:collapse}
+.infobox.bordered td,
+.infobox.bordered th {border:1px solid #a2a9b1}
+.infobox.bordered .borderless td, .infobox.bordered .borderless th {border:0}
+.infobox.sisterproject {width:20em; font-size:90%}
+.infobox.bordered .mergedtoprow td, .infobox.bordered .mergedtoprow th {border:0; border-top:1px solid #a2a9b1; border-right:1px solid #a2a9b1}
+.infobox.bordered .mergedrow td, .infobox.bordered .mergedrow th {border:0; border-right:1px solid #a2a9b1}
+.infobox.geography {border-collapse:collapse; line-height:1.2em; font-size:90%}
+.infobox.geography  td, .infobox.geography  th {border-top:1px solid #a2a9b1; padding:0.4em 0.6em 0.4em 0.6em}
+.infobox.geography .mergedtoprow td, .infobox.geography .mergedtoprow th {border-top:1px solid #a2a9b1; padding:0.4em 0.6em 0.2em 0.6em}
+.infobox.geography .mergedrow td, .infobox.geography .mergedrow th {border:0; padding:0 0.6em 0.2em 0.6em}
+.infobox.geography .mergedbottomrow td, .infobox.geography .mergedbottomrow th {border-top:0; border-bottom:1px solid #a2a9b1; padding:0 0.6em 0.4em 0.6em}
+.infobox.geography .maptable td, .infobox.geography .maptable th {border:0; padding:0}
+
+/* TOP 버튼 */
+#top-button{opacity:0; transition:opacity 0.5s; pointer-events: none; width:30px;height:30px;border:solid 3px #1e96ff; border-radius:30px; position:fixed; right:15px; bottom:15px; background-color:white; cursor:pointer; z-index:999}
+#top-button.active{opacity:0.7; pointer-events: auto}
+#top-button:hover{opacity:1}
+#top-button::before, #top-button::after{content:''; display:block; width:15px; height:4px; background-color:#1e96ff; position:absolute;}
+#top-button::before{left:3px; top:12px; transform:rotate(135deg)}
+#top-button::after{left:12px; top:11px; transform:rotate(45deg)}
+
+/* 내비게이션 박스 */
+.navbox {box-sizing:border-box;border:1px solid #a2a9b1; width:100%; clear:both; font-size:88%; text-align:center; padding:1px; margin:1em auto 0}
+.navbox .navbox {margin-top:0}
+.navbox + .navbox {margin-top:-1px}
+.navbox-inner, .navbox-subgroup {width:100%}
+.navbox-group, .navbox-title, .navbox-abovebelow {padding:0.25em 1em; line-height:1.5em; text-align:center}
+th.navbox-group {white-space:nowrap; text-align:right}
+.navbox, .navbox-subgroup {background-color:#fdfdfd}
+.navbox-list {line-height:1.5em; border-color:#fdfdfd}
+tr + tr > .navbox-abovebelow, tr + tr > .navbox-group, tr + tr > .navbox-image, tr + tr > .navbox-list {border-top:2px solid #fdfdfd}
+.navbox th, .navbox-title {background-color:#ccccff}
+.navbox-abovebelow, th.navbox-group, .navbox-subgroup .navbox-title {background-color:#ddddff}
+.navbox-subgroup .navbox-group, .navbox-subgroup .navbox-abovebelow {background-color:#e6e6ff}
+.navbox-even {background-color:#f7f7f7}
+.navbox-odd {background-color:transparent}
+.navbox .hlist td dl, .navbox .hlist td ol, .navbox .hlist td ul, .navbox td.hlist dl, .navbox td.hlist ol, .navbox td.hlist ul {padding:0.125em 0}
+
+.hlist dl, .hlist ol, .hlist ul {margin:0; padding:0}
+.hlist dd, .hlist dt, .hlist li {margin:0; display:inline}
+.hlist.inline, .hlist.inline dl, .hlist.inline ol, .hlist.inline ul, .hlist dl dl, .hlist dl ol, .hlist dl ul, .hlist ol dl, .hlist ol ol, .hlist ol ul, .hlist ul dl, .hlist ul ol, .hlist ul ul {display:inline}
+.hlist .mw-empty-li {display:none}
+.hlist dt:after {content:":"}
+.hlist dd:after, .hlist li:after {content:" · "; font-weight:bold}
+.hlist dd:last-child:after, .hlist dt:last-child:after, .hlist li:last-child:after {content:none}
+.hlist dd dd:first-child:before, .hlist dd dt:first-child:before, .hlist dd li:first-child:before, .hlist dt dd:first-child:before, .hlist dt dt:first-child:before, .hlist dt li:first-child:before, .hlist li dd:first-child:before, .hlist li dt:first-child:before, .hlist li li:first-child:before {content:" ("; font-weight:normal}
+.hlist dd dd:last-child:after, .hlist dd dt:last-child:after, .hlist dd li:last-child:after, .hlist dt dd:last-child:after, .hlist dt dt:last-child:after, .hlist dt li:last-child:after, .hlist li dd:last-child:after, .hlist li dt:last-child:after, .hlist li li:last-child:after {content:")"; font-weight:normal}
+.hlist ol {counter-reset:listitem}
+.hlist ol > li {counter-increment:listitem}
+.hlist ol > li:before {content:" " counter(listitem) "\a0"}
+.hlist dd ol > li:first-child:before, .hlist dt ol > li:first-child:before, .hlist li ol > li:first-child:before {content:" (" counter(listitem) "\a0"}
+
+.plainlist ol, .plainlist ul {line-height:inherit; list-style:none none; margin:0}
+.plainlist ol li, .plainlist ul li {margin-bottom:0}
+
+/* 인쇄 스타일 보정 */
+@media print {
+	#mw-navigation{display:none}
+}
+
+/* 존재하지 않는 문서 페이지의 '기록' 링크 스타일 제거 */
+.plainlinks a.disable{color: inherit; text-decoration: auto !important; cursor: auto}
+
+/* 공유하기 툴바 스타일 */
+#wikisharetoolbar{position:absolute; left:-10px; bottom:-100px; margin-left:10px; margin-bottom:10px; background:transparent !important; border:none; padding:0}
+.wikishare_icon {margin: 2px}
+.wikishare_button_SMS img{width:30px; opacity:0.5}
+.wikishare_button_KakaoTalk{display:none;}
+.wikishare_button_Copy{display:none;}
+
+.mg-top-sm{margin-top:14px}
+
+
+.tx-center p {text-align:center;}
+.gallerytext p {text-align:center;}
+ul.gallery{padding:0; margin:0}
+ul.gallery .thumb{margin:0 !important}
+
+
+/* 본문 스타일 */
+.mw-parser-output{line-height:1.7; font-size:15px}
+.skin-minerva .mw-parser-output{font-size:18px}
+.mw-parser-output i{font-style: italic}
+
+/* 틀:그림, 틀:앨범 스타일 */
+.custom-image {background-color:#f8f9fa; border:1px solid #c8ccd1; color: #000; padding:3px; overflow:hidden}
+.custom-image.noborder, .custom-album .custom-image {background:none; border:none}
+.custom-image img{width:100%; height:auto}
+.custom-image .thumbcaption{text-align:center}
+.skin-vector .custom-image .thumbcaption{text-align:left}
+.church-thumb .custom-image .thumbcaption{text-align:center}
+.custom-image pre{overflow:hidden; background:none; border:none; padding:0; margin:0; line-height:0}
+.custom-image.center {margin:0 auto}
+.custom-image.right {margin-left:auto}
+.custom-image.float-left {clear:left; float:left; margin:5px 0; margin-right:10px}
+.custom-image.float-right {clear:right; float:right; margin:5px 0; margin-left:10px}
+.custom-album {display:flex; flex-wrap:wrap; max-width:100%; align-items:flex-start; border: solid 1px #d3d8e1; background-color: #f4f5f7}
+.custom-album * {box-sizing:border-box}
+.custom-album .custom-image {max-height: 100%}
+.custom-album.center {margin:0 auto}
+.custom-album.right {margin-left:auto}
+.custom-album.float-left {clear:left; float:left; margin:5px 0; margin-right: 10px}
+.custom-album.float-right {clear:right; float:right; margin:5px 0; margin-left: 10px}
+.custom-album.noborder {border: none; background: none}
+.custom-album > p {display:none}
+
+@media(max-width:719px){
+	.custom-album > *{width:100% !important}
+}
+
+/* 언어 box */
+.vector-menu-dropdown {
+    direction: ltr;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    line-height: 1.125em;
+    top: 10px;
+}
+
+.select-language {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(https://churchofgod.wiki/resources/assets/ico_lang.svg) no-repeat left center;
+  background-size: 32px;
+}
+
+#mw-head .vector-menu-dropdown .vector-menu-heading {
+  border-radius: 6px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 5px;
+  gap: 5px;
+  height: 30px;
+  top: 10px;
+}
+
+.vector-menu-dropdown .vector-menu-checkbox:checked ~ .vector-menu-content {
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 6px 0;
+}
+
+.vector-menu-dropdown:not(.vector-user-menu):hover .vector-menu-content {
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 6px 0;
+}
+
+#footer-places-disclaimers {
+    display: none;
+}

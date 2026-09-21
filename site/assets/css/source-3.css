@@ -1,0 +1,44 @@
+/* 기기가 모바일이라도 데스크톱 모드로 접속하면 데스크톱 콘텐츠가 보이게*/
+.nomobile {display:block}
+.mobileonly {display:none}
+
+/* 미디어뷰어 다운로드 방지 */
+.mw-mmv-download-button,
+.mw-mmv-dialog.mw-mmv-download-dialog {display:none!important}
+
+/* 틀 삽입도구 버튼 스타일 */
+.my-buttons {text-align:left; font-size:110%; color:black; background-color:#f9f9f9 !important; text-decoration:none; border:1px solid #dddddd; margin:0.25em; padding-left:3px; padding-right:3px}
+.my-button_gp {text-align:left; font-size:110%; color:black; background-color:#fc3 !important; text-decoration:none; border:1px solid #dddddd; margin:0.25em; padding-left:3px; padding-right:3px}
+#editform .my-button_file {display:none}
+#mw-upload-form .mw-charinsert-buttons,
+#mw-upload-form .mw-charinsert-button,
+#mw-upload-form .mw-editTools > p {display:none}
+#mw-upload-form .mw-charinsert-buttons.my-button_file {display:block}
+.mw-charinsert-buttons {border:1px solid #aaa; margin-top:10px; padding:1px; font-size:1.1em; text-align:left}
+.mw-charinsert-button_gp {border:1px solid #aaa; margin-top:10px; padding:1px; font-size:1.1em; text-align:center; color:red}
+.mw-charinsert-buttons a {background-color:#cde !important; color:#000; border:thin #069 outset; padding:0 1px 1px; font-weight:bold; font-size:0.9em; text-decoration:none}
+.mw-charinsert-buttons a:hover,
+.mw-charinsert-buttons a:active {background-color:#bcd; border-style:inset}
+.client-js .mw-edittools-section {display:inline}
+.client-js .mw-edittools-section input[type="button"] {font-size:0.9em; margin-left:1px; padding-left:1px; padding-right:1px}
+.mw-body::before{content:''; width:960px; background:#a7d7f9; height:1px; display:block; position:absolute; top:0; left:50%; transform:translateX(-50%)}
+/* .mw-body{margin-left:160px; padding-top:40px} */
+.cog-box-inner{padding:20px}
+/* .mw-footer{margin:60px 0 0 160px} */
+.mw-content-ltr ol{margin-left:20px; margin-right:20px}
+
+div.thumbinner{background-color:initial}
+.thumbimage{border:none}
+
+.cog-container h2{border:none}
+.site-link ul{padding:0; margin:0}
+.site-link ul li{list-style:none; font-size:14px}
+*:lang(ko) {word-break:keep-all}
+
+@media(min-width:768px){
+	.row{display:flex; flex-wrap:wrap}
+	.col-4{width:33.33%}
+}
+
+#mw-content-text{position:relative}
+.catlinks-allhidden {display: block; opacity: 0; pointer-events: none; min-height: 34px}

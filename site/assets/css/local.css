@@ -1,0 +1,31 @@
+/* Preserve the source wiki's desktop layout while making narrow screens usable. */
+.mw-wiki-logo { background-image: url('../logo.png') !important; }
+.local-edit-link { display:inline-block; margin: 0 0 8px; font-size: 13px; }
+.local-list ul { columns: 2; column-gap: 2rem; }
+.local-list li { break-inside: avoid; margin-bottom: .3rem; }
+.local-result-list { list-style: none; padding: 0; }
+.local-result-list li { border-bottom: 1px solid #eaecf0; padding: 12px 0; }
+.local-result-list li p { color: #54595d; font-size: 14px; margin: 3px 0 0; }
+.local-mobile-nav { display: none; }
+@media (max-width: 767px) {
+  html, body { min-width: 0 !important; overflow-x: hidden; }
+  #mw-page-base, #mw-head-base { display: none; }
+  #mw-panel { display: none; }
+  #mw-head { position: static !important; width: auto !important; height: auto !important; display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 12px; background: #fff; border-bottom: 1px solid #a7d7f9; }
+  #mw-head #p-personal, #mw-head #left-navigation, #mw-head #right-navigation { position: static !important; float: none !important; margin: 0 !important; }
+  #mw-head #p-personal { order: 2; width: 100%; }
+  #mw-head #p-search { margin: 0 !important; width: min(100%, 400px) !important; }
+  #mw-head #p-search form { width: 100%; }
+  #mw-head .local-mobile-nav { display: block; width: 100%; order: 3; border-top: 1px solid #eaecf0; padding-top: 8px; }
+  .local-mobile-nav summary { cursor: pointer; font-weight: 600; color: #202122; }
+  .local-mobile-nav a { display: block; padding: 7px 0; border-bottom: 1px solid #f0f0f0; }
+  #content.mw-body { margin: 0 !important; border: 0 !important; padding: 16px !important; width: auto !important; }
+  #footer { margin: 0 !important; padding: 20px 16px !important; }
+  .mw-body h1 { font-size: 1.7rem; }
+  .mw-body-content { overflow-wrap: anywhere; }
+  .mw-parser-output img { max-width: 100%; height: auto; }
+  .mw-parser-output table { display: block; max-width: 100%; overflow-x: auto; }
+  .mw-parser-output .thumb, .mw-parser-output .tright, .mw-parser-output .tleft { float: none !important; max-width: 100%; margin: 1em 0 !important; }
+  .mw-parser-output .thumbinner { max-width: 100%; box-sizing: border-box; }
+  .local-list ul { columns: 1; }
+}

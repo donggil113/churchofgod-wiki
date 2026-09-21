@@ -1,0 +1,36 @@
+media:
+  input: media
+  output: /media
+  rename: safe
+content:
+  - name: articles
+    label: 문서
+    type: collection
+    path: content/pages
+    format: json
+    filename: "{primary}.json"
+    view:
+      primary: title
+      fields: [title, categories]
+    fields:
+      - name: title
+        label: 문서 제목
+        type: string
+        required: true
+      - name: summary
+        label: 검색 결과 요약
+        type: text
+      - name: categories
+        label: 분류
+        type: string
+        list: true
+      - name: body
+        label: 본문
+        type: rich-text
+        required: true
+        options:
+          format: html
+          media: false
+      - name: source_url
+        label: 원본 주소
+        type: string

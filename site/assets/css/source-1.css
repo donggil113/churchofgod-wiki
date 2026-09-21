@@ -1,0 +1,209 @@
+/* 헤더 언어선택 관련 */
+.select-mobile > a {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #54595d;
+    justify-content: end;
+    width: 34px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+.select-mobile > a:before {
+    content: '';
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-right: 7px;
+    background: url(https://churchofgod.wiki/resources/assets/ico_lang.svg) no-repeat left center;
+    background-size: 38px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    width: fit-content;
+    float: right;
+    // box-shadow: 0 0 5px rgba(0 0 0 / 25%);
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    margin-top: 52px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.minerva-user-notifications {
+    display: none;
+}
+
+#mobile-language {
+    list-style: none;
+    padding: 0;
+}
+
+#mobile-language {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* li 요소를 세로로 배치 */
+}
+#mobile-language li {
+    margin: 5px; /* 필요에 따라 여백을 조절할 수 있습니다. */
+}
+
+#mobile-language li a {
+    color: #333;
+    padding: 2px 4px;
+    text-decoration: none;
+    display: block;
+    background-color: transparent;
+    transition: background-color 0.3s ease; /* 부드러운 색상 전환을 위한 트랜지션 설정 */
+}
+
+#mobile-language li a span {
+    display: block;
+    color: #a9a9a9;
+    font-size: 13px;
+}
+
+.header-container {
+    position: sticky;
+    top: 0;
+    width: -webkit-fill-available;
+    z-index: 1;
+}
+
+#selectLanguage {
+    position: absolute;
+    top: 0;
+}
+
+#searchIcon {
+    position: absolute;
+    right: 50px;
+    z-index: 2;
+}
+
+#layer-lang {
+    display: none;
+}
+
+#selectLanguage:hover #layer-lang {
+    display: block;
+}
+
+.overlay-header,
+.minerva-header {
+    border-top: 0 !important;
+}
+.minerva-notifications {display: none;}
+
+
+
+/* Minerva 상단 브랜드 텍스트 길어서 아이콘 겹치는 문제 해결 */
+.minerva-header .branding-box {
+    max-width: calc(100% - 90px);
+}
+
+/* 실제 텍스트에 말줄임 적용 */
+.minerva-header .branding-box a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 720px) {
+    .minerva-header .branding-box {
+        max-width: calc(100% - 96px);
+    }
+}
+
+/* 커스텀 모바일 메뉴 토글 */
+#p-main-categories {
+    margin: 0;
+    padding: 0;
+}
+
+#p-main-categories .menu-section-title {
+    border-top: 1px solid #c8ccd1;
+}
+
+#p-main-categories .menu-section-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85em 1em;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+#p-main-categories .menu-section-title .toggle-list-item__label {
+    font-weight: 700;
+}
+
+#p-main-categories .menu-section-arrow {
+    font-size: 0.95em;
+    line-height: 1;
+}
+
+#p-main-categories .menu-section-item {
+    display: none;
+}
+
+#p-main-categories .menu-section-item .toggle-list-item__anchor {
+    display: block;
+}
+
+
+.content p.video-wrap {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    padding-bottom: 56.25% !important;
+    margin: 0 !important;
+}
+
+.content p.video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
