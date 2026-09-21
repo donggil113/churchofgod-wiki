@@ -148,6 +148,9 @@ def render(shell: str, title: str, body: str, prefix: str, titles: dict[str, str
         content.append(item)
     set_categories(soup, categories or [], prefix)
     localize_links(soup, prefix, titles, local_images)
+    copyright_link = soup.select_one("#footer-info-custom-copyright a")
+    if copyright_link:
+        copyright_link["href"] = prefix + "wiki/3603/"
     search = soup.select_one("#searchform")
     if search:
         search["action"] = prefix + "search.html"
